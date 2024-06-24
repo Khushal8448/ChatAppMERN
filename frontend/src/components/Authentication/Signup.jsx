@@ -9,7 +9,7 @@ import {
   VStack,
 } from "@chakra-ui/react";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import axios from "axios";
 
 const Signup = () => {
@@ -21,7 +21,7 @@ const Signup = () => {
   const [pics, setPics] = useState();
   const [loading, setLoading] = useState(false);
   const toast = useToast();
-  const navigate = useNavigate();
+  const history = useHistory();
 
   const handleClick = () => setShow(!show);
 
@@ -128,7 +128,7 @@ const Signup = () => {
       localStorage.setItem("userInfo", JSON.stringify(data));
 
       setLoading(false);
-      navigate("/chats");
+      history.push("/chats");
     } catch (error) {
       console.log(error);
       toast({

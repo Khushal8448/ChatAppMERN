@@ -10,14 +10,14 @@ import {
 } from "@chakra-ui/react";
 import axios from "axios";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 const Login = () => {
   const [show, setShow] = useState(false);
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [loading, setLoading] = useState(false);
-  const navigate = useNavigate();
+  const history = useHistory();
   const toast = useToast();
 
   const handleClick = () => setShow(!show);
@@ -60,7 +60,7 @@ const Login = () => {
       localStorage.setItem("userInfo", JSON.stringify(data));
 
       setLoading(false);
-      navigate("/chats");
+      history.push("/chats");
     } catch (error) {
       console.log(error);
       toast({
